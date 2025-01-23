@@ -1,0 +1,21 @@
+@CrudTest_HostAddress = http://localhost:5074
+
+### Create a new person
+POST {{CrudTest_HostAddress}}/api/people
+Content-Type: application/json
+Accept-Language: en-US,en;q=0.5
+
+{
+  "name": "John Doe",
+  "age": 30
+}
+
+### Get all people
+GET {{CrudTest_HostAddress}}/api/people
+Accept: application/json
+
+### Get the first person by id
+@personId = {{response.body[0].id}}
+
+### Delete the first person by id
+DELETE {{CrudTest_HostAddress}}/api/people/{{personId}}
